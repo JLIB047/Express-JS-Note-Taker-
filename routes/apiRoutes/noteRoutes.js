@@ -1,4 +1,4 @@
-const { createNewNote } = require('../../lib/noteFunctions');
+const { createNewNote , deleteNote } = require('../../lib/noteFunctions');
 const { notes } = require('../../db/db.json');
 const router = require('express').Router();
 
@@ -15,6 +15,11 @@ router.post('/notes', (req, res) => {
     res.json(note);
 })
 
+//delete note 
+router.delete('/notes/:id', (req, res) => {
+    deleteNote(notes, req.params.id);
+    res.json(notes);
+})
 
 
 module.exports = router;
